@@ -1,27 +1,46 @@
 import React, { useState } from 'react'
+import {useForm} from "../../hooks/useForm"
 import { MainContainer, Form, Input } from './styles'
 
 function MainPage() {
-  const [nome, setNome] = useState("")
-  const [idade, setIdade] = useState("")
-  const [email, setEmail] = useState("")
+  // const [nome, setNome] = useState("")
+  // const [idade, setIdade] = useState("")
+  // const [email, setEmail] = useState("")
 
-  const onChangeNome = (event) => {
-    setNome(event.target.value)
-  }
+  //unificação do form
 
-  const onChangeIdade = (event) => {
-    setIdade(event.target.value)
-  }
+  // const [form, setForm] = useState({nome: "", idade: "", email: ""})
 
-  const onChangeEmail = (event) => {
-    setEmail(event.target.value)
-  }
+  // const onChangeForm = (event) => {
+  
+  //   const { name, value } = event.target
+  //   const novoForm = {
+  //     ...form,
+  //     [name]: value
+  //   }
+  //   setForm(novoForm)
+   
+  // }
+
+  const [form, onChangeForm] = useForm({nome: "", idade: "", email: "", profissao: ""})
+  
+
+  // const onChangeNome = (event) => {
+  //   setNome(event.target.value)
+  // }
+
+  // const onChangeIdade = (event) => {
+  //   setIdade(event.target.value)
+  // }
+
+  // const onChangeEmail = (event) => {
+  //   setEmail(event.target.value)
+  // }
 
   const handleClick = (event) => {
     event.preventDefault()
-
-    console.log(`nome: ${nome}, idade: ${idade}, e-mail: ${email} `)
+  console.log(form)
+   console.log(`nome: ${form.nome}, idade: ${form.idade}, e-mail: ${form.email}, profissao: ${form.profissao} `)
   }
 
   return (
@@ -32,22 +51,37 @@ function MainPage() {
         <label htmlFor="nome">Nome:</label>
         <Input 
           id="nome"
-          value={nome}
-          onChange={onChangeNome}
+          name="nome"
+          value={form.nome}
+          onChange={onChangeForm}
         />
 
         <label htmlFor="idade">Idade:</label>
         <Input 
+          type="number"
           id="idade"
-          value={idade}
-          onChange={onChangeIdade}
+          name="idade"
+          value={form.idade}
+          onChange={onChangeForm}
         />
 
         <label htmlFor="email">E-mail:</label>
         <Input 
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          title="digite um formato valido"
           id="email"
-          value={email}
-          onChange={onChangeEmail}
+          name="email"
+          value={form.email}
+          onChange={onChangeForm}
+        />
+
+<label htmlFor="profissao">Profissão:</label>
+        <Input 
+          id="profissao"
+          name="profissao"
+          value={form.profissao}
+          onChange={onChangeForm}
+          required
         />
         
         

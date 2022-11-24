@@ -3,8 +3,7 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.header`
     width: 100vw;
     height: 8vh;
-    background-color: #ffffff;
-    border: 1px solid black;
+    background-color: lightgrey;
     display: flex;
     justify-content: space-between;
 `
@@ -19,9 +18,9 @@ export const Logo = styled.div`
 `
 
 export const NavBar = styled.nav`
-    background-color: #f7b158;
+    background-color: lightgrey;
     width: 50%;
-
+    
 `
 export const OptionsList = styled.ul`
     display: flex;
@@ -29,5 +28,8 @@ export const OptionsList = styled.ul`
     justify-content: space-evenly;
     height: 100%;
     align-items: center;
+    :hover{
+        background-color: #f7b158;
+    }
     
 `
